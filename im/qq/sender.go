@@ -183,7 +183,7 @@ func (sender *Sender) Reply(msgs ...interface{}) (int, error) {
 				bot.SendPrivateMessage(m.Sender.Uin, m.GroupCode, &message.SendingMessage{Elements: []message.IMessageElement{&coolq.LocalImageElement{Stream: bytes.NewReader(data)}}})
 			}
 		}
-		if content != "" {
+		if content != "" && m.Sender.Uin != 0 {
 			bot.SendPrivateMessage(m.Sender.Uin, m.GroupCode, &message.SendingMessage{Elements: bot.ConvertStringMessage(content, false)})
 		}
 	case *message.GroupMessage:
